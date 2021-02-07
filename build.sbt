@@ -7,8 +7,7 @@ import sbt._
 import java.text.SimpleDateFormat
 
 val scala212 = "2.12.12"
-val scala211 = "2.11.12"
-val supportedScalaVersions = List(scala212, scala211)
+val supportedScalaVersions = List(scala212)
 
 val MAJOR = "0"
 val MINOR = "0"
@@ -19,14 +18,17 @@ ThisBuild / organization := "com.dgs"
 ThisBuild / version := s"$MAJOR.$MINOR.$BUILD_NUMBER"
 ThisBuild / resolvers ++= Seq(Resolver.defaultLocal)
 ThisBuild / Test / fork := true
+ThisBuild / scalacOptions +="-Ypartial-unification"
 
 ThisBuild / semanticdbEnabled := true
 ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 ThisBuild / scalafixOnCompile := false
 
 lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5"
-lazy val sparkCore = "org.apache.spark" %% "spark-core" % "2.4.7"
-lazy val sparkMLLib = "org.apache.spark" %% "spark-mllib" % "2.4.7"
+lazy val sparkCore = "org.apache.spark" %% "spark-core" % "3.0.1"
+lazy val sparkMLLib = "org.apache.spark" %% "spark-mllib" % "3.0.1"
+
+lazy val catsLib = "org.typelevel" %% "cats-core" % "2.1.1"
 
 lazy val buildTimestamp: String = {
   val currentTime = System.currentTimeMillis()
@@ -58,7 +60,8 @@ lazy val scalaLibrary = (project in file("library/scala"))
     name := "autodatamassage",
     libraryDependencies += scalaTest % Test,
     libraryDependencies += sparkCore,
-    libraryDependencies += sparkMLLib
+    libraryDependencies += sparkMLLib,
+    libraryDependencies += catsLib
   )
 
 lazy val root = (project in file("."))
