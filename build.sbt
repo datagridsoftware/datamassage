@@ -18,7 +18,6 @@ ThisBuild / organization := "com.dgs"
 ThisBuild / version := s"$MAJOR.$MINOR.$BUILD_NUMBER"
 ThisBuild / resolvers ++= Seq(Resolver.defaultLocal)
 ThisBuild / Test / fork := true
-ThisBuild / scalacOptions +="-Ypartial-unification"
 
 ThisBuild / semanticdbEnabled := true
 ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
@@ -27,8 +26,6 @@ ThisBuild / scalafixOnCompile := false
 lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5"
 lazy val sparkCore = "org.apache.spark" %% "spark-core" % "3.0.1"
 lazy val sparkMLLib = "org.apache.spark" %% "spark-mllib" % "3.0.1"
-
-lazy val catsLib = "org.typelevel" %% "cats-core" % "2.1.1"
 
 lazy val buildTimestamp: String = {
   val currentTime = System.currentTimeMillis()
@@ -60,8 +57,7 @@ lazy val scalaLibrary = (project in file("library/scala"))
     name := "autodatamassage",
     libraryDependencies += scalaTest % Test,
     libraryDependencies += sparkCore,
-    libraryDependencies += sparkMLLib,
-    libraryDependencies += catsLib
+    libraryDependencies += sparkMLLib
   )
 
 lazy val root = (project in file("."))
