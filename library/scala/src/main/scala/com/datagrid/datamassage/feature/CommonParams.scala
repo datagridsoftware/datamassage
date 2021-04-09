@@ -1,4 +1,4 @@
-package com.dgs.datamassage.feature
+package com.datagrid.datamassage.feature
 
 import org.apache.spark.ml.param.{Param, ParamValidators, Params, StringArrayParam}
 import org.json4s.{DefaultFormats, JDouble, JLong}

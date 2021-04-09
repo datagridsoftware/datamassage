@@ -1,4 +1,4 @@
-package com.dgs.datamassage.feature
+package com.datagrid.datamassage.feature
 
 import org.apache.spark.ml.param.shared._
 import org.apache.spark.ml.param.{ParamMap, Params}

@@ -1,4 +1,4 @@
-package com.dgs.datamassage.feature
+package com.datagrid.datamassage.feature
 
 import org.apache.hadoop.fs.Path
 import org.apache.spark.ml.Transformer

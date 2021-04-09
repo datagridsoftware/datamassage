@@ -1,8 +1,8 @@
-package com.dgs.autodatamassage
+package com.datagrid.autodatamassage
 
 import org.apache.spark.sql.{Row, SparkSession}
 import org.scalatest.{BeforeAndAfterAll, FeatureSpec, Matchers}
-import com.dgs.datamassage.feature._
+import com.datagrid.datamassage.feature._
 import com.typesafe.scalalogging.StrictLogging
 import org.apache.spark.ml.linalg.SQLDataTypes.VectorType
 import org.apache.spark.ml.linalg.Vectors
