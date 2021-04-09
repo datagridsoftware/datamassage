@@ -26,6 +26,7 @@ ThisBuild / scalafixOnCompile := false
 lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5"
 lazy val sparkCore = "org.apache.spark" %% "spark-core" % "3.0.1"
 lazy val sparkMLLib = "org.apache.spark" %% "spark-mllib" % "3.0.1"
+lazy val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 
 lazy val buildTimestamp: String = {
   val currentTime = System.currentTimeMillis()
@@ -47,7 +48,7 @@ lazy val commonSettings = Seq(
   packageOptions := Seq(ManifestAttributes(("Build-Time", buildTimestamp))),
   organizationName := "DataGridSoftware",
   startYear := Some(2021),
-  licenses += ("Apache-2.0") -> url("https://www.apache.org/licenses/LICENSE-2.0.txt")
+  licenses += "Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.txt")
 
 )
 
@@ -57,7 +58,8 @@ lazy val scalaLibrary = (project in file("library/scala"))
     name := "autodatamassage",
     libraryDependencies += scalaTest % Test,
     libraryDependencies += sparkCore,
-    libraryDependencies += sparkMLLib
+    libraryDependencies += sparkMLLib,
+    libraryDependencies += scalaLogging
   )
 
 lazy val root = (project in file("."))

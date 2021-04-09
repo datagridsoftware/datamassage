@@ -8,9 +8,8 @@ import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.{DataFrame, Dataset}
 
 
-trait CategoricalIndexerBase extends Params with HasHandleInvalid with HasInputCol with HasInputCols with HasCatNumericalInputCols
+trait CategoricalIndexerBase extends Params with HasHandleInvalid with HasInputCol with HasInputCols with HasCategoricalNumericalInputCols
   with HasOutputCol with HasOutputCols {
-
 }
 
 object CategoricalIndexer extends DefaultParamsReadable[CategoricalIndexer] {
@@ -52,7 +51,6 @@ object CategoricalIndexerModel extends MLReadable[CategoricalIndexerModel] {
 
   override def load(path: String): CategoricalIndexerModel = super.load(path)
 }
-
 
 class CategoricalIndexerModel(override val uid: String) extends Model[CategoricalIndexerModel] with MLWritable {
   override def copy(extra: ParamMap): CategoricalIndexerModel = ???
