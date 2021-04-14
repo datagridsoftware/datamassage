@@ -1,6 +1,7 @@
 package com.datagrid.datamassage.feature
 
-import org.apache.spark.ml.param.{Param, ParamValidators, Params, StringArrayParam}
+import org.apache.spark.ml.feature.VectorIndexer
+import org.apache.spark.ml.param.{IntParam, Param, ParamValidators, Params, StringArrayParam}
 import org.json4s.{DefaultFormats, JDouble, JLong}
 import org.json4s.JsonAST.{JBool, JObject}
 import org.json4s.jackson.JsonMethods.{compact, parse, render}
@@ -18,6 +19,25 @@ trait HasCategoricalNumericalInputCols extends Params {
 
   /** @group getParam */
   final def getCatNumericInputCols: Array[String] = $(catNumericalInputCols)
+}
+
+trait HasMaxCategories extends Params{
+  /**
+   * Threshold for the number of values a categorical feature can take.
+   * If a feature is found to have {@literal >} maxCategories values, then it is declared
+   * continuous. Must be greater than or equal to 2.
+   *
+   * (default = 20)
+   * @group param
+   */
+  val maxCategories = new IntParam(this, "maxCategories",
+    "Threshold for the number of values a categorical feature can take (>= 2)." +
+      " If a feature is found to have > maxCategories values, then it is declared continuous.",
+    ParamValidators.gtEq(2))
+
+  def getMaxCategories: Int = $(maxCategories)
+
+  setDefault(maxCategories -> 20)
 }
 
 trait NullStringParam extends Params {

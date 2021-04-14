@@ -11,7 +11,7 @@ import org.apache.spark.sql.{DataFrame, Dataset}
 
 
 trait AutoDataMassageBase extends Params with HasHandleInvalid with HasInputCol with HasInputCols
-  with HasOutputCol with HasOutputCols {
+  with HasOutputCol with HasOutputCols with HasMaxCategories{
 
   /**
    * Param for how to order labels of categorical columns. The first label after ordering is assigned

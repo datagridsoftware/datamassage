@@ -1,4 +1,4 @@
-package com.datagrid.autodatamassage
+package com.datagridsoftware.datamassage
 
 import org.apache.spark.sql.{Row, SparkSession}
 import org.scalatest.{BeforeAndAfterAll, FeatureSpec, Matchers}

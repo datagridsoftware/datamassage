@@ -22,7 +22,7 @@ class CategoricalIndexer(override val uid: String) extends Estimator[Categorical
 
   override def fit(dataset: Dataset[_]): CategoricalIndexerModel = ???
 
-  override def copy(extra: ParamMap): Estimator[CategoricalIndexerModel] = ???
+  override def copy(extra: ParamMap): Estimator[CategoricalIndexerModel] =  defaultCopy(extra)
 
   override def transformSchema(schema: StructType): StructType = ???
 
@@ -47,7 +47,7 @@ object CategoricalIndexerModel extends MLReadable[CategoricalIndexerModel] {
     override def load(path: String): CategoricalIndexerModel = ???
   }
 
-  override def read: MLReader[CategoricalIndexerModel] = ???
+  override def read: MLReader[CategoricalIndexerModel] = new CategoricalIndexerModelReader()
 
   override def load(path: String): CategoricalIndexerModel = super.load(path)
 }

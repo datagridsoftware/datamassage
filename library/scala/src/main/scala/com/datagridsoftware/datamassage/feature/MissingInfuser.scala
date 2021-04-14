@@ -73,10 +73,7 @@ class MissingInfuser(override val uid: String)
     data.sqlContext.createDataFrame(redefinedRdd(data, schema, inputColdWithNullVals), schema)
   }
 
-  override def copy(extra: ParamMap): MissingInfuser = {
-    val model = new MissingInfuser()
-    copyValues(model, extra)
-  }
+  override def copy(extra: ParamMap): MissingInfuser =  defaultCopy(extra)
 
   override def transformSchema(schema: StructType): StructType = validateAndTransformSchema(schema)
 
@@ -142,9 +139,9 @@ class MissingInfuser(override val uid: String)
 
 
 object MissingInfuser extends DefaultParamsReadable[MissingInfuser] {
-  override def read: MLReader[MissingInfuser] = new EmptyValuesInfuserReader
+  override def read: MLReader[MissingInfuser] = new MissingInfuserReader
 
-  private[MissingInfuser] class EmptyValuesInfuserReader extends MLReader[MissingInfuser] {
+  private[MissingInfuser] class MissingInfuserReader extends MLReader[MissingInfuser] {
     implicit val format = DefaultFormats
 
     override def load(path: String): MissingInfuser = {
