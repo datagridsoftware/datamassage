@@ -11,7 +11,7 @@ val supportedScalaVersions = List(scala212)
 
 val MAJOR = "0"
 val MINOR = "0"
-val BUILD_NUMBER = "1"
+val BUILD_NUMBER = sys.env.get("BUILD_NUMBER").getOrElse("1")
 
 ThisBuild / scalaVersion := scala212
 ThisBuild / organization := "com.datagridsoftware"
