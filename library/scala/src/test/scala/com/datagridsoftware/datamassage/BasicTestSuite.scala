@@ -34,7 +34,7 @@ class BasicTestSuite extends FeatureSpec with Matchers{
       val dataset = spark.sqlContext.createDataFrame(List[Row](row0,row1,row2 ).asJava, schema)
 
 
-      val si = new StringIndexer() .setInputCol("strField1").setHandleInvalid("keep")
+      val si = new StringIndexer().setInputCol("strField1").setHandleInvalid("keep")
         .setOutputCol("categoryIndex")
 
       //val vi = new VectorIndexer()
