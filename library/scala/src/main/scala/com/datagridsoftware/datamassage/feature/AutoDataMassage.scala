@@ -25,7 +25,7 @@ trait AutoDataMassageBase extends Params with HasHandleInvalid with HasInputCol 
    *
    * @group param
    */
-  final val categoricalFieldsOrderType: Param[String] = new Param(this, "stringOrderType",
+  val categoricalFieldsOrderType: Param[String] = new Param(this, "stringOrderType",
     "How to order labels of string column. " +
       "The first label after ordering is assigned an index of 0. " +
       s"Supported options: ${AutoDataMassage.supportedStringOrderType.mkString(", ")}.",

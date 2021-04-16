@@ -4,17 +4,16 @@ language: scala
 
 jdk: openjdk8
 
-
 scala:
   - 2.12.12
-  - 2.13.3
 
 env:
+  global:
+    BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
   # This splits the build into two parts
   matrix:
-    - COMMAND="compile;scalafix;package"
+    - COMMAND="compile;scalafix;package;publish"
     #- TEST_COMMAND="scripted merging/* caching/*"
-
 script:
   - sbt -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M "$COMMAND"
 

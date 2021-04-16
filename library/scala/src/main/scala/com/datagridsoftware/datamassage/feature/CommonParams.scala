@@ -15,10 +15,10 @@ trait HasCategoricalNumericalInputCols extends Params {
    *
    * @group param
    */
-  final val catNumericalInputCols: StringArrayParam = new StringArrayParam(this, "catNumericalInputCols", "categorical numeric input column names")
+  val catNumericalInputCols: StringArrayParam = new StringArrayParam(this, "catNumericalInputCols", "categorical numeric input column names")
 
   /** @group getParam */
-  final def getCatNumericInputCols: Array[String] = $(catNumericalInputCols)
+  def getCatNumericInputCols: Array[String] = $(catNumericalInputCols)
 }
 
 trait HasMaxCategories extends Params{
@@ -58,7 +58,7 @@ trait NullStringParam extends Params {
   def setNullStringParam(value: String): this.type = set(nullStringParam, value)
 
   /** @group getParam */
-  final def getNullStringParam: String = $(nullStringParam)
+  def getNullStringParam: String = $(nullStringParam)
 
 
   setDefault(nullStringParam, "__NULL__")
@@ -92,7 +92,7 @@ trait NullBooleanParam extends Params {
   def setNullBooleanParam(value: Boolean): this.type = set(nullBooleanParam, value)
 
   /** @group getParam */
-  final def getNullBooleanParam: Boolean = $(nullBooleanParam)
+  def getNullBooleanParam: Boolean = $(nullBooleanParam)
 
   setDefault(nullBooleanParam, false)
 }
@@ -119,7 +119,7 @@ trait NullNumericParam extends Params {
   }
 
   /** @group getParam */
-  final def getNullNumericParam: Double = $(nullNumericParam)
+  def getNullNumericParam: Double = $(nullNumericParam)
 
   /**
    *
@@ -160,7 +160,7 @@ trait NullTimestampParam extends Params {
   def setNullTimestampParam(value: Timestamp): this.type = set(nullTimestampParam, value)
 
   /** @group getParam */
-  final def getNullTimestampParam: Timestamp = $(nullTimestampParam)
+  def getNullTimestampParam: Timestamp = $(nullTimestampParam)
 
   setDefault(nullTimestampParam, new Timestamp(0))
 }

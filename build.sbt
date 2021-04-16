@@ -61,6 +61,7 @@ lazy val commonSettings = Seq(
   publishTo := Some("datagridsoftware_build_publish" at ARTIFACTORY_PRIVATE_IVY_REPO),
   publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true),
   publishM2Configuration := publishM2Configuration.value.withOverwrite(true),
+  publishConfiguration := publishConfiguration.value.withOverwrite(true),
   pomIncludeRepository := { (repo: MavenRepository) => false },
   packageOptions := Seq(ManifestAttributes(("Build-Time", buildTimestamp))),
   organizationName := "DataGridSoftware",
